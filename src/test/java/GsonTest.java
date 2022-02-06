@@ -1,3 +1,4 @@
+import dataproviders.DataProviderClass;
 import dtos.Client;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -8,7 +9,7 @@ import java.io.File;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 
-import static utils.GsonUtils.loadJson;
+import static utils.GsonUtils.loadJsonFromFile;
 
 public class GsonTest {
 
@@ -61,9 +62,10 @@ public class GsonTest {
         System.out.println(json);
     }
 
-    /*@Test(dataProvider = "orders")
+    @Test(dataProvider = "orders", dataProviderClass = DataProviderClass.class)
     public void convertJsonFileFromJava(String file) {
         File filePath = new File(file);
-        Order order = loadJson(Order.class, filePath);
-    }*/
+        Order order = loadJsonFromFile(filePath);
+        System.out.println(order.toString());
+    }
 }
