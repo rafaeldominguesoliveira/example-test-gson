@@ -7,6 +7,6 @@ import java.util.List;
 @Data
 public class Order {
     private int id;
-    private Client client;
+    private Customer client;
     private List<Items> items;
 }

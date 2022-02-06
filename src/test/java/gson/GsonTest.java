@@ -1,5 +1,7 @@
+package gson;
+
 import dataproviders.DataProviderClass;
-import dtos.Client;
+import dtos.Customer;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import dtos.Order;
@@ -21,7 +23,7 @@ public class GsonTest {
                 "\temail : \"rafael@email.com\"\n" +
                 "}";
         Gson gson = new Gson();
-        Client client = gson.fromJson(json, Client.class);
+        Customer client = gson.fromJson(json, Customer.class);
         System.out.println(client.getId());
         System.out.println(client.getName());
         System.out.println(client.getEmail());
@@ -29,9 +31,13 @@ public class GsonTest {
 
     @Test
     public void convertJavaFromJson() {
-        Client client = Client.builder().id(2).name("Gabriel").email("gabriel@email.com").build();
+        Customer customer = new Customer();
+        customer.setId(2);
+        customer.setName("Gabriel");
+        customer.setEmail("gabriel@email.com");
+
         Gson gson = new Gson();
-        String json = gson.toJson(client);
+        String json = gson.toJson(customer);
         System.out.println(json);
     }
 
@@ -49,15 +55,21 @@ public class GsonTest {
 
     @Test
     public void convertJavaListFromJson() {
-        ArrayList<Client> clients = new ArrayList<Client>();
-        Client newClient = Client.builder().id(3).name("New Client").email("newclient@email.com").build();
-        clients.add(newClient);
+        ArrayList<Customer> customers = new ArrayList<Customer>();
+        Customer customer = new Customer();
+        customer.setId(3);
+        customer.setName("New Customer");
+        customer.setEmail("newcustomer@email.com");
+        customers.add(customer);
 
-        newClient = Client.builder().id(4).name("New Client 2").email("newclient2@email.com").build();
-        clients.add(newClient);
+        customer = new Customer();
+        customer.setId(4);
+        customer.setName("New Customer 2");
+        customer.setEmail("newcustomer2@email.com");
+        customers.add(customer);
 
         Gson gson = new Gson();
-        String json = gson.toJson(clients);
+        String json = gson.toJson(customers);
 
         System.out.println(json);
     }
