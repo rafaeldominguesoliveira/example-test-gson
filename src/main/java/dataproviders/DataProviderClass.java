@@ -9,7 +9,7 @@ public class DataProviderClass {
     public Object[][] getOrders() {
         return new Object[][]
                 {
-                        {ORDERS_FILEPATH.getFilePath()}
+                        {"src/test/resources/json_structures/orders.json"}
                 };
 
     }
